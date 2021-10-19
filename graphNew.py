@@ -176,7 +176,7 @@ class Graph(object):
             for word, value in article.items():
                 sum = self.wordCountNodes.get(word, 0)
                 types = self.wordArticleNodes.get(word, 0)
-                Tf_Idf = value / float(sum) * math.log1p((1 + articleSum) / types)
+                Tf_Idf = value / float(sum) * math.log1p(articleSum / (types+1))
                 tempArticle[word] = Tf_Idf
             tempArticle = self.normalize(tempArticle)
             articlelist.append(tempArticle)
